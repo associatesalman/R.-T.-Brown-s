@@ -1,0 +1,223 @@
+/* Duty / Love hero. Two full-frame artwork layers. The Love layer is clipped
+   from the left edge to the divider position, held in the --x variable. */
+
+.hero {
+  --x: 50%;
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+  min-height: 560px;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  cursor: ew-resize;
+  /* Vertical swipes still scroll the page. Horizontal swipes move the divider. */
+  touch-action: pan-y;
+  background: var(--navy);
+  isolation: isolate;
+}
+
+.side {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.side .art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+
+.side .tint {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Same tints as the reference: cold navy on Duty, warm rose on Love. */
+.duty .tint {
+  background: linear-gradient(#050b1688, #050b16cc);
+}
+
+.love {
+  clip-path: inset(0 0 0 var(--x));
+  will-change: clip-path;
+}
+
+.love .tint {
+  background: linear-gradient(#2a141044, #2a1410aa);
+}
+
+/* Swapped variant: the chair art keeps its faces lit under the warm tint, so the
+   top of the Love tint is a little lighter there. The bottom matches the reference. */
+.hero[data-variant='swapped'] .love .tint {
+  background: linear-gradient(#2a141033, #2a1410aa);
+}
+
+/* Reference variant: the chair art is darker than the reference placeholder, so the
+   top of the Duty tint is lighter to keep the faces readable. The bottom matches. */
+.hero[data-variant='reference'] .duty .tint {
+  background: linear-gradient(#050b1655, #050b16cc);
+}
+
+.word {
+  position: absolute;
+  top: var(--word-top, 16%);
+  margin: 0;
+  line-height: 0.85;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.duty .word {
+  left: 5vw;
+  font: 900 clamp(70px, 16vw, 230px) / 0.85 var(--duty);
+  color: #e9f3ff;
+  letter-spacing: 0.01em;
+}
+
+.love .word {
+  right: 5vw;
+  font: italic 600 clamp(70px, 16vw, 230px) / 0.85 var(--love);
+  color: #ffe2c4;
+}
+
+.line {
+  position: absolute;
+  bottom: var(--line-bottom, 20%);
+  max-width: 21em;
+  margin: 1em 0; /* default paragraph margins, as in the reference */
+  font-size: 20px;
+  line-height: 1.7;
+  pointer-events: none;
+  text-shadow: 0 1px 12px #050b16aa;
+}
+
+.duty .line {
+  left: 5vw;
+}
+
+.love .line {
+  right: 5vw;
+  text-align: right;
+  font: italic 500 26px/1.35 var(--love);
+}
+
+.bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--x);
+  width: 2px;
+  margin-left: -1px;
+  background: linear-gradient(#0000, #fff, #0000);
+  box-shadow: 0 0 24px 4px #fff8;
+  pointer-events: none;
+  will-change: left;
+}
+
+/* Keyboard handle. Invisible, centred on the bar, with the amber focus ring when tabbed to. */
+.handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--x);
+  width: 44px;
+  margin-left: -22px;
+  outline: none;
+  cursor: ew-resize;
+}
+
+.handle:focus-visible {
+  outline: 3px solid var(--amber);
+  outline-offset: -3px;
+}
+
+.ttl {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 6%;
+  text-align: center;
+  pointer-events: none;
+  padding: 0 4vw;
+}
+
+.ttl h1 {
+  margin: 0;
+  font: 800 clamp(24px, 4vw, 44px) / 1.1 var(--duty);
+  letter-spacing: 0.2em;
+  text-transform: none;
+  color: #fff;
+  text-shadow: 0 2px 20px #000;
+  text-wrap: balance;
+}
+
+.ttl small {
+  display: block;
+  text-wrap: balance;
+  font: italic 600 22px var(--love);
+  color: #ffe2c4;
+  text-shadow: 0 1px 10px #000;
+}
+
+.hint {
+  position: absolute;
+  top: 14px;
+  left: 0;
+  right: 0;
+  margin: 1em 0; /* default paragraph margins, as in the reference */
+  text-align: center;
+  font-size: 15px;
+  color: #fff;
+  text-shadow: 0 1px 8px #000;
+  pointer-events: none;
+}
+
+@media (max-width: 760px) {
+  .duty .line,
+  .love .line {
+    font-size: 17px;
+    max-width: 12em;
+    bottom: var(--line-bottom, 26%);
+  }
+}
+
+/* ?debug=focus overlay */
+.dbg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.dbg-box {
+  position: absolute;
+  border: 2px dashed;
+}
+
+.dbg-box span {
+  position: absolute;
+  top: -20px;
+  left: -2px;
+  padding: 0 6px;
+  font: 600 12px/20px var(--b);
+  color: #000;
+}
+
+.dbg-info {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  padding: 2px 8px;
+  background: #000c;
+  font: 12px/1.6 monospace;
+  color: #fff;
+}

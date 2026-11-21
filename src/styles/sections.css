@@ -1,0 +1,231 @@
+/* Sections below the hero, matching the reference's spacing and type. */
+
+.wrap {
+  max-width: 1100px;
+  margin: auto;
+  padding: 90px 6vw;
+}
+
+/* The mission / The heart */
+.cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.cd,
+.cl {
+  padding: 80px 6vw;
+}
+
+.cd {
+  background: #07101f;
+  border-right: 1px solid var(--line);
+}
+
+.cl {
+  background: #1c0f0c;
+}
+
+.cd h2 {
+  font: 900 52px/1 var(--duty);
+  color: #e9f3ff;
+  margin: 0 0 20px;
+}
+
+.cl h2 {
+  font: italic 600 58px/1 var(--love);
+  color: #ffe2c4;
+  margin: 0 0 20px;
+}
+
+.cl p {
+  color: #f1ddd0;
+}
+
+/* Out now: Book VI */
+.book {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  gap: 5vw;
+  align-items: center;
+}
+
+.book img {
+  width: 100%;
+  height: auto;
+  box-shadow:
+    0 0 0 1px var(--line),
+    0 24px 60px #000;
+}
+
+h3 {
+  font: 800 38px/1.1 var(--duty);
+  margin: 0 0 14px;
+  letter-spacing: 0.03em;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 12px 26px;
+  background: linear-gradient(90deg, var(--ice), var(--amber));
+  color: #10161f;
+  font: 800 19px var(--duty);
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  transition:
+    filter 0.2s ease,
+    transform 0.2s ease;
+}
+
+.btn:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn[data-pending] {
+  cursor: default;
+}
+
+/* Series list chips */
+.s {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 30px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 15px;
+}
+
+.s li {
+  border: 1px solid var(--line);
+  padding: 6px 14px;
+}
+
+.s .n {
+  background: var(--amber);
+  color: #1a0f08;
+  border-color: var(--amber);
+}
+
+/* The man behind the squadron */
+.author {
+  padding-top: 0;
+}
+
+.author .bio {
+  max-width: 40em;
+}
+
+.author-grid {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  gap: 5vw;
+  align-items: center;
+}
+
+.author-photos {
+  display: grid;
+  gap: 12px;
+}
+
+.author-photos img {
+  width: 100%;
+  height: auto;
+  box-shadow:
+    0 0 0 1px var(--line),
+    0 24px 60px #000;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 40px 6vw 60px;
+  font-size: 15px;
+  color: var(--muted);
+  border-top: 1px solid #16263c;
+}
+
+footer a {
+  color: inherit;
+}
+
+footer a[data-pending] {
+  cursor: default;
+}
+
+/* Floating hero-placement review switch */
+.vswitch {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  background: #050b16d9;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font: 600 13px/1 var(--b);
+  box-shadow: 0 6px 24px #0008;
+}
+
+.vswitch-label {
+  padding: 0 8px 0 10px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 11px;
+}
+
+.vswitch button {
+  appearance: none;
+  border: 0;
+  border-radius: 999px;
+  padding: 8px 12px;
+  background: transparent;
+  color: var(--txt);
+  font: inherit;
+  cursor: pointer;
+}
+
+.vswitch button[aria-pressed='true'] {
+  background: linear-gradient(90deg, var(--ice), var(--amber));
+  color: #10161f;
+}
+
+@media (max-width: 760px) {
+  .cols,
+  .book,
+  .author-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .book img {
+    max-width: 200px;
+  }
+
+  .author-photos {
+    max-width: 200px;
+  }
+
+  .cd {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .vswitch {
+    top: auto;
+    bottom: 12px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+}

@@ -1,0 +1,62 @@
+/* Design tokens and base styles, taken from the approved reference
+   (robertbrownsample.netlify.app). */
+
+:root {
+  --ice: #9cc7ee;
+  --navy: #050b16;
+  --amber: #ffb067;
+  --rose: #2a1410;
+  --txt: #dce7f4;
+  --line: #2b4a70;
+  --muted: #7f95ad;
+
+  --duty: 'Big Shoulders Display', 'Arial Narrow', Impact, sans-serif;
+  --love: 'Cormorant Garamond', Georgia, serif;
+  --b: 'Figtree', Arial, sans-serif;
+
+  color-scheme: dark;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--navy);
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--navy);
+  color: var(--txt);
+  font: 18px/1.7 var(--b);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  display: block;
+}
+
+:focus-visible {
+  outline: 3px solid var(--amber);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--amber);
+  color: #1a0f08;
+}
