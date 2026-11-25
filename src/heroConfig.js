@@ -29,7 +29,7 @@ export const ARTWORK = {
   },
 }
 
-// Review variants. The Duty and Love labels and captions never move sides.
+// Hero placements. The Duty and Love labels and captions never move sides.
 // Only the artwork underneath them swaps.
 export const HERO_VARIANTS = {
   reference: {
@@ -48,7 +48,6 @@ export const HERO_VARIANTS = {
   },
 }
 
-export const DEFAULT_VARIANT = 'reference'
-
-// Shows the floating Reference / Swapped switch. Turn it off once Robert chooses.
-export const SHOW_VARIANT_SWITCH = true
+// Approved placement shown on the live site: the pilot/jets artwork under Duty
+// (left) and the two women pressing their heads together under Love (right).
+export const HERO_PLACEMENT = 'swapped'

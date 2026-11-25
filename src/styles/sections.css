@@ -159,49 +159,6 @@ footer a[data-pending] {
   cursor: default;
 }
 
-/* Floating hero-placement review switch */
-.vswitch {
-  position: fixed;
-  top: 12px;
-  right: 12px;
-  z-index: 50;
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  padding: 3px;
-  background: #050b16d9;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  font: 600 13px/1 var(--b);
-  box-shadow: 0 6px 24px #0008;
-}
-
-.vswitch-label {
-  padding: 0 8px 0 10px;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 11px;
-}
-
-.vswitch button {
-  appearance: none;
-  border: 0;
-  border-radius: 999px;
-  padding: 8px 12px;
-  background: transparent;
-  color: var(--txt);
-  font: inherit;
-  cursor: pointer;
-}
-
-.vswitch button[aria-pressed='true'] {
-  background: linear-gradient(90deg, var(--ice), var(--amber));
-  color: #10161f;
-}
-
 @media (max-width: 760px) {
   .cols,
   .book,
@@ -220,12 +177,5 @@ footer a[data-pending] {
   .cd {
     border-right: 0;
     border-bottom: 1px solid var(--line);
-  }
-
-  .vswitch {
-    top: auto;
-    bottom: 12px;
-    right: 50%;
-    transform: translateX(50%);
   }
 }
